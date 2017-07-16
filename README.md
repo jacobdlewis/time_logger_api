@@ -12,7 +12,11 @@ Rake db:create
 
 ## Testing
 
-bundle exec rspec
+plain output:
+`bundle exec rspec`
+
+verbose output:
+`bundle exec rspec --format documentation`
 
 --------------
 
