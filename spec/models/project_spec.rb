@@ -2,10 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Project, type: :model do
   # test associations
-  it { should belong_to(:client) }
-  it { should belong_to(:category) }
+  describe "associations" do
+    it { should belong_to(:client) }
+    it { should belong_to(:category) }
+  end
 
   # test validations
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:active) }
+  describe "validations" do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:active) }
+  end
 end
