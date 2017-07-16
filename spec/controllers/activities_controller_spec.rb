@@ -19,7 +19,7 @@ RSpec.describe Api::ActivitiesController, :type => :controller do
   describe "POST #create" do
     describe "with valid parameters" do
       before(:each) do
-        post :create, params: { activity: { name: "Meetings" } }
+        post :create, params: { activity: { "name": "Meetings" } }
       end
       it "responds successfully" do
         expect(response).to be_success
@@ -32,11 +32,8 @@ RSpec.describe Api::ActivitiesController, :type => :controller do
       before(:each) do
         post :create, params: { activity: { name: "" } }
       end
-      it "responds with failure" do
-        expect(response).to be_failure
-      end
       it "responds with a 422 status code" do
-        expect(response).to have_http_status 201
+        expect(response).to have_http_status 422
       end
     end
 
@@ -51,8 +48,17 @@ RSpec.describe Api::ActivitiesController, :type => :controller do
       it "responds successfully" do
         expect(response).to be_success
       end
-      it "responds with a 200 status code" do
+      it "responds with a 204 status code" do
         expect(response).to have_http_status 200
+      end
+    end
+    describe "with invalid parameters" do
+      before(:each) do
+        activity = create(:activity)
+        put :update, params: { id: activity.id, activity: { name: "", active: false } }
+      end
+      it "responds with a 422 status code" do
+        expect(response).to have_http_status 422
       end
     end
   end
