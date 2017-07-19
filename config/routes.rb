@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   namespace :api do
     resources :activities, except: :destroy
     resources :categories, except: :destroy
+    resources :clients, except: :destroy
   end
 end
