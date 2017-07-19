@@ -19,7 +19,7 @@ RSpec.describe Api::ActivitiesController, :type => :controller do
   describe "POST #create" do
     describe "with valid parameters" do
       before(:each) do
-        post :create, params: { activity: { "name": "Meetings" } }
+        post :create, params: { activity: { name: "Meetings" } }
       end
       it "responds successfully" do
         expect(response).to be_success

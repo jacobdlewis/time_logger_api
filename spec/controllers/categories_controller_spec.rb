@@ -19,7 +19,7 @@ RSpec.describe Api::CategoriesController, :type => :controller do
   describe "POST #create" do
     describe "with valid parameters" do
       before(:each) do
-        post :create, params: { category: { "name": "Meetings" } }
+        post :create, params: { category: { name: "Meetings" } }
       end
       it "responds successfully" do
         expect(response).to be_success
