@@ -10,6 +10,7 @@ RSpec.describe Project, type: :model do
   # test validations
   describe "validations" do
     it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:active) }
+    it { should validate_presence_of(:category_id)}
+    it { should validate_presence_of(:client_id)}
   end
 end
