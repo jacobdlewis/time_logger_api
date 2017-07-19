@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :activities, except: :destroy
     resources :categories, except: :destroy
     resources :clients, except: :destroy
+    resources :projects, except: :destroy
   end
 end
