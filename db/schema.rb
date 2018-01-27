@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719015419) do
+ActiveRecord::Schema.define(version: 20180127033938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,21 @@ ActiveRecord::Schema.define(version: 20170719015419) do
     t.index ["client_id"], name: "index_projects_on_client_id"
   end
 
+  create_table "time_entries", force: :cascade do |t|
+    t.string "area"
+    t.integer "business_mileage"
+    t.string "comment"
+    t.datetime "date"
+    t.decimal "hours"
+    t.integer "personal_mileage"
+    t.bigint "project_id"
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_time_entries_on_activity_id"
+    t.index ["project_id"], name: "index_time_entries_on_project_id"
+  end
+
   add_foreign_key "projects", "categories"
   add_foreign_key "projects", "clients"
+  add_foreign_key "time_entries", "activities"
+  add_foreign_key "time_entries", "projects"
 end
